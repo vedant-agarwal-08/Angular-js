@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <h1>Account opening form</h1>
+    <form ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
+        <table>
+            <tr>
+                <th colspan="2">Personal details</th>
+            </tr>
+            <tr>
+                <td>
+                    <label for="name">Name*</label>
+                </td>
+                <td>
+                    <!-- ng-patter for evaluating regexp or a string  -->
+                    <input type="text" name="name" ng-model="name" ng-pattern="/^[a-zA-Z]+$/" required> <br>
+                    <span ng-show="myForm.name.$error.pattern" class="red">only alphabets are allowed.</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="nameOf">Name of <br><i>(Father/Guardian)</i></label>
+                </td>
+                <td>
+                    <input type="text" name="nameOf" ng-model="nameOf">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="dob">Date of birth*(dd-mm-yy)</label>
+                    <td>
+                        <input type="text" name="dob" id="dob" ng-model="dob" ng-pattern="/^0[1-9|{12}[0-9]|3[01]-(0[1-9]|1[0-2])-\d{4}$/]">
+                       <div ng-show="myForm.dob.$dirty && myForm.dob.$invalid">
+                            <span ng-show="myForm.dob.$error.reqquired">Date of birth is required</span>
+                            <span ng-show="myForm.dob.$error.pattern" class="red">Please enter a valid date in format dd-mm-yyyy.</span>
+                       </div>
+
+                        
+                    </td>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

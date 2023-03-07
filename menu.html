@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question 10</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+  <body>
+    <div ng-app="myApp" ng-controller="jsCtrl">
+      <h1>Plan-it!</h1>
+      <p>
+        Click the button to generate a random 3-meal meanu plan!
+        <button id="day-btn" ng-click="fetchmenu()">Fetch Random Menu</button>
+      </p>
+      <section id="day-results" class="hidden">
+        <article id="breakfast">
+          <h2><span class="name">{{breakfastname}}</span> (Breakfast)</h2>
+          <hr />
+          <p class="description">{{breakfdesc}}</p>
+          <p>Food Groups:</p>
+          <ul class="food-groups">
+            <li
+              ng-hide="myvar"
+              ng-repeat="x in foodmenu.breakfast.foodgroups">
+              {{x}}
+            </li>
+          </ul>
+        </article>
+        <article id="lunch">
+          <h2><span class="name">{{lunchname}}</span>(Lunch)</h2>
+          <hr />
+          <p class="description">{{lunchdesc}}</p>
+          <p>Food Groups:</p>
+          <ul class="food-groups">
+            <li
+              ng-hide="myvar"
+              ng-repeat="y in foodmenu.lunch.foodgroups">
+              {{y}}
+            </li>
+          </ul>
+        </article>
+        <article id="dinner">
+          <h2><span class="name">{{dinnername}}</span>(Dinner)</h2>
+          <hr />
+          <p class="description">{{dinnerdesc}}</p>
+          <p>Food Groups:</p>
+          <ul class="food-groups">
+            <li
+              ng-hide="myvar"
+              ng-repeat="z in foodmenu.dinner.foodgroups">
+              {{z}}
+            </li>
+          </ul>
+        </article>
+      </section>
+    </div>
+    <script>
+      var app = angular.module("myApp", []);
+      app.controller("jsCtrl", function ($scope) {
+        $scope.foodmenu = {
+          breakfast: {
+            name: "Blueberry Oatmeal",
+            description: "One cup of hot oatmeal with 1/4 cup of fresh blueberries.",
+            foodgroups: ["Grains", "Fruit"],
+          },
+          lunch: {
+            name: "Froot Loops",
+            description:"A baggy of rainbow Froot Loops - a classic college student lunch.",
+            foodgroups: ["Grains"],
+          },
+          dinner: {
+            name: "Spaghetti with Tomato Sauce",
+            description:"Two pies made with love and filled full of flavors.Blueberry,strawberry,you name it,you have it!",
+            foodgroups: ["Grains", "Fruit", "Other"],
+          },
+        };
+        var i = 0;
+        var j = 0;
+        $scope.myvar = true;
+        $scope.fetchmenu = function () {
+          $scope.myvar = false;
+          $scope.fgps = "";
+          for (i in $scope.foodmenu) {
+            $scope.breakfastname = $scope.foodmenu.breakfast.name;
+            $scope.breakfdesc = $scope.foodmenu.breakfast.description;
+            $scope.lunchname = $scope.foodmenu.lunch.name;
+            $scope.lunchdesc = $scope.foodmenu.lunch.description;
+            $scope.dinnername = $scope.foodmenu.dinner.name;
+            $scope.dinnerdesc = $scope.foodmenu.dinner.description;
+          }
+        };
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+  <body>
+    <div ng-app="myApp" ng-controller="jsCtrl1">
+      Name of Food: <input id="foodname" type="text" ng-model="foodname" />
+      Food Group:
+      <select id="foodgroup" ng-model="foodgroup">
+        <option>dairy</option>
+        <option>fats</option>
+        <option>fruit</option>
+        <option>meat</option>
+        <option>veggies</option>
+      </select>
+      <button id="eat" ng-click="remove()">Eat!</button>
+      <div ng-switch="foodgroup">
+        <div ng-switch-when="dairy">
+          <img
+            src="milk.png"
+            class="food dairy"
+            alt="milk"
+            nghide="milk"
+            ng-model="milk"
+          />
+        </div>
+        <div ng-switch-when="fats">
+          <img
+            src="cookie.png"
+            class="food fats"
+            alt="cookie"
+            nghide="cookie"
+            ng-model="cookie"
+          />
+          <img
+            src="chips.png"
+            class="fats food other"
+            alt="chips"
+            nghide="chips"
+            ng-model="chips"
+          />
+        </div>
+        <div ng-switch-when="fruit">
+          <img
+            src="apple.png"
+            class="fruit yummy food"
+            alt="apple"
+            nghide="apple"
+            ng-model="apple"
+          />
+          <img
+            src="tomato.png"
+            class="fruit food"
+            alt="tomato"
+            nghide="tomato"
+            ng-model="tomato"
+          />
+        </div>
+        <div ng-switch-when="meat">
+          <img
+            src="steak.png"
+            class="food meat"
+            alt="steak"
+            nghide="steak"
+            ng-model="steak"
+          />
+        </div>
+        <div ng-switch-when="veggies">
+          <img
+            src="broc.png"
+            class="food veggies"
+            alt="broccoli"
+            nghide="broccoli"
+            ng-model="broccoli"
+          />
+        </div>
+      </div>
+    </div>
+    <script>
+      var app = angular.module("myApp", []);
+      app.controller("jsCtrl1", function ($scope) {
+        $scope.foodname = $scope.foodname ? $scope.foodname.toLowerCase() : "";
+        $scope.remove = function () {
+          switch ($scope.foodname) {
+            case "cookie":
+              $scope.cookie = "true";
+              $scope.foodname = "";
+              break;
+            case "apple":
+              $scope.apple = "true";
+              $scope.foodname = "";
+              break;
+            case "tomato":
+              $scope.tomato = "true";
+              $scope.foodname = "";
+              break;
+            case "milk":
+              $scope.milk = "true";
+              $scope.foodname = "";
+              break;
+            case "chips":
+              $scope.chips = "true";
+              $scope.foodname = "";
+              break;
+            case "steak":
+              $scope.steak = "true";
+              $scope.foodname = "";
+              break;
+          }
+        };
+      });
+    </script>
+  </body>
+</html>

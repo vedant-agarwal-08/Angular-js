@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+</head>
+<body ng-app=""
+ng-init="greet='Hello world';
+amount=1000;
+rateOfInterest=10.5;
+duration=10;
+myArr=[100,200];
+person={firstname:'steve',lastname:'jobs'}">
+{{(amount*rateOfInterest*duration)/100}} <br>
+{{myArr[1]}} <br>
+{{person.firstName+" "+person.lastName}} <br> <br>
+    2+2={{2+2}} <br>
+    2-2={{2-2}} <br>
+    2*2={{2*2}} <br>
+    2/2={{2/2}} <br>
+    {{"Hello world"}}
+    {{"hello"+"world"}}
+    {{true+false}}
+    {{10.2+11.2}}
+</body>
+</html>
